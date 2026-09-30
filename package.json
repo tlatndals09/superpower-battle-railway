@@ -1,0 +1,782 @@
+{
+  "name": "superpower-battle-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "초능력 대전 온라인 멀티플레이 서버",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ws": "^8.22.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+파일 3: public/game.html
+당신의 원본 game.html 파일을 그대로 사용합니다.
+
+(이미 받은 파일 - 수정 없음)
+
+✅ 다음 단계
+GitHub에 업로드하는 방법을 알려드리겠습니다.
+
+준비됐나요?
+
+어
+
+✅ 준비됐습니다!
+이제 GitHub에 업로드하는 방법을 알려드리겠습니다.
+
+1단계: GitHub 저장소 생성
+https://github.com/new 방문
+Repository name: superpower-battle-online
+Public 선택
+"Create repository" 클릭
+2단계: 파일 업로드
+GitHub 저장소 페이지에서:
+
+"Add file" → "Create new file"
+파일명: server.js
+위의 server.js 코드 전체 복사 붙여넣기
+"Commit new file" 클릭
+같은 방식으로:
+
+package.json 파일 생성
+public/game.html 파일 생성 (폴더명을 public/로 입력)
+3단계: Railway 배포
+https://railway.app 방문
+"New Project" 클릭
+"Deploy from GitHub" 선택
+저장소 선택: superpower-battle-online
+"Deploy" 클릭
+지금 바로 GitHub에 업로드하세요!
+
+업로드 완료하면 알려주세요! 🚀
+
+public/game.html
+이거 할때 뭐 붙혀넣어
+
+✅ 당신의 원본 game.html 전체 코드를 붙여넣으세요!
+당신이 처음에 보여준 이 코드입니다:
+
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+...
+(처음부터 끝까지 전체)
+...
+</script></body></html>
+단계:
+GitHub에서 "Add file" → "Create new file"
+파일명: public/game.html
+당신이 보여준 game.html 코드 전체 복사
+붙여넣기
+"Commit new file" 클릭
+한 글자도 수정하지 말고 그대로 붙여넣으세요!
+
+준비됐나요?
+
+걍 알려줘
+
+✅ 당신의 원본 game.html 코드:
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>초능력 대전</title>
+<style>
+html,body{height:100%;margin:0;background:#000;color:#fff;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+.scr{display:none;height:100%;box-sizing:border-box}
+.center{flex-direction:column;align-items:center;justify-content:center;gap:18px}
+h1{font-size:34px;margin:0 0 14px}
+button{background:none;color:#fff;border:2px solid #fff;border-radius:10px;font-size:22px;padding:12px 40px;font-family:inherit;cursor:pointer}
+button.small{font-size:15px;padding:6px 18px;border-color:#888;color:#ccc}
+.row{display:flex;align-items:center;gap:12px;font-size:22px}
+input{background:#000;color:#fff;border:2px solid #fff;border-radius:8px;font-size:24px;width:4.6em;padding:8px;text-align:center;letter-spacing:.2em;text-transform:uppercase;font-family:inherit}
+#msg{min-height:20px;color:#ffe14a;font-size:14px;text-align:center;max-width:320px}
+#codeTag{display:none;position:fixed;z-index:5;top:calc(env(safe-area-inset-top,0px) + 16px);left:20px;font-size:20px;font-weight:700;letter-spacing:.15em}
+#duel{position:relative;align-items:center;justify-content:center}
+#cv{display:block}
+#exitBtn{display:none;position:absolute;font-size:20px;padding:8px 32px;background:#000;transform:translateX(-50%)}
+#skillScr{flex-direction:column;align-items:center;justify-content:flex-start;padding:12px;gap:14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.tb{font-size:16px;padding:8px 18px}
+.tb.on{border-color:#ffe14a;color:#ffe14a}
+#scv{touch-action:none;border:1px solid #666;display:block}
+#smsg,#setmsg{min-height:20px;color:#ffe14a;font-size:14px;text-align:center}
+#sgrid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-content:flex-start;max-width:520px}
+.sitem{text-align:center;border:3px solid #444;border-radius:8px;padding:4px;font-size:13px;cursor:pointer;width:96px}
+.sitem.sel{border-color:#ffe14a}
+.sitem canvas{display:block;width:72px;height:72px;margin:0 auto}
+.sitem .st{font-size:11px;color:#aaa;line-height:1.3}
+.slot{width:80px;text-align:center;border:3px solid #444;border-radius:8px;padding:4px;cursor:pointer;box-sizing:border-box}
+.slot.sel{border-color:#ffe14a}
+.slot .sk{font-size:18px;font-weight:700;color:#ffe14a}
+.slot canvas{display:block;width:64px;height:64px;margin:2px auto}
+.slot button{margin-top:2px;font-size:12px;padding:3px 8px;border:0;border-radius:6px;background:#444}
+#skillBtn,#skillSetBtn{font-size:16px;padding:8px 26px}
+</style></head><body>
+<div id="codeTag"></div>
+
+<div class="scr center" id="menu"><h1>초능력 대전</h1><button id="startBtn">시작</button><button id="skillBtn">스킬 커스텀</button><button id="skillSetBtn">스킬 설정</button></div>
+
+<div class="scr center" id="codeScr">
+ <div class="row"><span>코드</span><input id="code" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD"></div>
+ <div class="row"><button id="makeBtn" style="padding:12px 24px">방 만들기</button><button id="joinBtn" style="padding:12px 24px">참여</button></div>
+ <div id="msg"></div>
+ <button class="small" id="codeBack">돌아가기</button>
+</div>
+
+<div class="scr" id="skillScr">
+ <div class="bar"><button class="tb" id="skillBack">돌아가기</button><button class="tb" id="skillSave">저장</button></div>
+ <canvas id="scv"></canvas>
+ <div class="bar"><button class="tb" id="skillEraser">지우개</button><button class="tb" id="skillUndo">되돌리기</button></div>
+ <div id="smsg"></div>
+</div>
+
+<div class="scr" id="skillSet" style="flex-direction:column;align-items:center;justify-content:flex-start;padding:12px;gap:12px;overflow-y:auto">
+ <div class="bar"><button class="tb" id="skillSetBack">돌아가기</button></div>
+ <div style="font-size:14px;opacity:.85;text-align:center;line-height:1.5">슬롯(J · K · L · ;)을 눌러 고른 뒤 아래 스킬을 누르면 들어가요.<br>슬롯을 고르지 않고 스킬을 누르면 빈 슬롯에 들어가고, 이미 들어간 스킬을 누르면 빠져요.</div>
+ <div id="slots" class="bar" style="gap:10px"></div>
+ <div style="font-size:15px;font-weight:700;margin-top:4px">궁극기 (P키) · 하나만 고를 수 있어요</div>
+ <div id="ults" class="bar" style="gap:8px"></div>
+ <div id="ultDesc" style="font-size:12px;color:#aaa;text-align:left;max-width:340px;white-space:pre-line;line-height:1.5"></div>
+ <div id="setmsg"></div>
+ <div id="sgrid"></div>
+</div>
+
+<div class="scr center" id="wait"><div style="font-size:26px;text-align:center;padding:0 16px" id="waitText">상대를 기다리는 중…</div><button class="small" id="leaveBtn">나가기</button></div>
+
+<div class="scr" id="duel"><canvas id="cv"></canvas><button id="exitBtn">나가기</button></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const FLEX={duel:'flex'};
+function go(id){document.querySelectorAll('.scr').forEach(e=>e.style.display='none');$(id).style.display=FLEX[id]||'flex';
+ $('codeTag').style.display=(id==='wait')?'block':'none';}
+go('menu');
+$('startBtn').onclick=()=>{$('msg').textContent='';go('codeScr')};
+$('skillBack').onclick=()=>go('menu');
+$('codeBack').onclick=()=>go('menu');
+
+/* ================= 게임 상수 ================= */
+const W=400,BH=300,CH=20,TOP_Y=60,BOT_Y=560,VH=980;   // 가상 좌표(캔버스 400\times980)
+const SPEED=W/1.7;            // 네모칸 한쪽 끝→끝 1.7초
+const PSPEED=VH/3;            // 스킬 속도: 화면 위아래 끝에서 끝까지 편도 3초
+const DMG_PER_PIXEL=3;
+const HEAL_EN=30,HEAL_CD=20,HEAL_AMT=10;
+const TP_EN=40,TP_CD=20,TP_DIST=4*CH;
+const ULT_MAX=100,CLOAK_MS=5000,FREEZE_MS=3000,SUMMON_SHOTS=20,SUMMON_GAP=500;
+const ROLL_EN=20,ROLL_CD=10,ROLL_DIST=3*CH;   // 구르기 기력/쿨타임은 지정이 없어서 임시값
+const SLOT_IDS=['J','K','L','S'], SLOT_LAB=['J','K','L',';'];
+const KEYMAP={KeyJ:'J',KeyK:'K',KeyL:'L',Semicolon:'S',Digit8:'8',Digit9:'9',Digit0:'0',Numpad8:'8',Numpad9:'9',Numpad0:'0',KeyP:'P'};
+const ONE='0'.repeat(40)+'1'+'0'.repeat(40);
+const MOVEKEYS=new Set(['KeyW','KeyA','KeyS','KeyD']);
+
+/* ================= 스킬 계산 ================= */
+function cnt(s){let n=0;for(let i=0;i<s.length;i++)if(s[i]==='1')n++;return n}
+function costOf(n){return 5+Math.max(0,n-3)}
+function cdOf(n){return Math.round((1+0.2*Math.max(0,n-3))*10)/10}
+function fmt(x){return String(x).replace(/\.0$/,'')}
+function validSkill(s){return typeof s==='string'&&/^[01]{81}$/.test(s)&&s.indexOf('1')>=0}
+function cellsOf(s){let minc=9,maxc=-1,maxr=-1;const a=[];
+ for(let i=0;i<81;i++)if(s[i]==='1'){const c=i%9,r=(i/9)|0;a.push([c,r]);if(c<minc)minc=c;if(c>maxc)maxc=c;if(r>maxr)maxr=r}
+ return a.map(([c,r])=>({ox:(c-(minc+maxc)/2)*CH,oy:(r-maxr)*CH-CH/2,dead:false}))}
+
+/* ================= 저장 데이터: 스킬 목록 + 4개 슬롯 ================= */
+let skills=[],slots=['','','',''],actSlot=-1,delSk=null;
+try{
+ const raw=JSON.parse(localStorage.getItem('skills')||'[]');
+ skills=(Array.isArray(raw)?raw:[]).filter(validSkill);
+ const rs=JSON.parse(localStorage.getItem('slots')||'null');
+ if(Array.isArray(rs))slots=[0,1,2,3].map(i=>skills.includes(rs[i])?rs[i]:'');
+ else{const old=localStorage.getItem('skillSel');if(old&&skills.includes(old))slots[0]=old}
+}catch(e){}
+let ult='';
+try{const ru=localStorage.getItem('ult');if(ru==='cloak'||ru==='freeze'||ru==='summon')ult=ru}catch(e){}
+function persist(){try{localStorage.setItem('skills',JSON.stringify(skills));localStorage.setItem('slots',JSON.stringify(slots));localStorage.setItem('ult',ult)}catch(e){}}
+
+/* ================= 스킬 설정 화면 ================= */
+function thumb(str){const c=document.createElement('canvas');c.width=c.height=72;const k=c.getContext('2d');k.fillStyle='#222';k.fillRect(0,0,72,72);
+ if(str){k.fillStyle='#fff';for(let n=0;n<81;n++)if(str[n]==='1')k.fillRect((n%9)*8,((n/9)|0)*8,8,8)}
+ else{k.fillStyle='#777';k.font='13px sans-serif';k.textAlign='center';k.textBaseline='middle';k.fillText('비어 있음',36,36)}
+ return c}
+function setMsg(t){$('setmsg').textContent=t||''}
+function buildSlots(){const h=$('slots');h.innerHTML='';
+ SLOT_LAB.forEach((lab,i)=>{const s=slots[i];const w=document.createElement('div');w.className='slot'+(actSlot===i?' sel':'');
+  const t=document.createElement('div');t.className='sk';t.textContent=lab;w.appendChild(t);
+  w.appendChild(thumb(s));
+  if(s){const b=document.createElement('button');b.textContent='빼기';b.onclick=ev=>{ev.stopPropagation();slots[i]='';persist();setMsg('');buildSlots();buildSkills()};w.appendChild(b)}
+  w.onclick=()=>{actSlot=(actSlot===i?-1:i);setMsg('');buildSlots()};
+  h.appendChild(w)})}
+function assign(str){
+ const at=slots.indexOf(str);
+ if(actSlot>=0){
+  if(at===actSlot){slots[at]=''}
+  else{if(at>=0)slots[at]='';slots[actSlot]=str}
+  actSlot=-1;
+ }else if(at>=0){slots[at]='';setMsg('')}
+ else{const t=slots.indexOf('');if(t<0){setMsg('슬롯 4개가 가득 찼어요. 슬롯을 먼저 고르거나 빼기를 눌러 주세요');return}slots[t]=str;setMsg('')}
+ persist();buildSlots();buildSkills()}
+function buildSkills(){const h=$('sgrid');h.innerHTML='';
+ if(!skills.length){h.textContent='저장한 스킬이 없어요. 스킬 커스텀에서 그려서 저장해 보세요.';return}
+ skills.forEach((str,i)=>{const at=slots.indexOf(str);const w=document.createElement('div');w.className='sitem'+(at>=0?' sel':'');
+  w.appendChild(thumb(str));
+  const l=document.createElement('div');l.textContent=at>=0?'✔ '+SLOT_LAB[at]:'#'+(i+1);w.appendChild(l);
+  const n=cnt(str),st=document.createElement('div');st.className='st';st.textContent=n+'칸 · 마나 '+costOf(n)+' · 쿨 '+fmt(cdOf(n))+'초';w.appendChild(st);
+  const d=document.createElement('button');const armed=delSk===str;d.textContent=armed?'정말 삭제?':'삭제';
+  d.style.cssText='margin-top:4px;font-size:12px;padding:4px 8px;border:0;border-radius:6px;color:#fff;background:'+(armed?'#e02020':'#444');
+  d.onclick=ev=>{ev.stopPropagation();if(delSk===str){skills=skills.filter(x=>x!==str);slots=slots.map(x=>x===str?'':x);delSk=null;persist();buildSlots();}else delSk=str;buildSkills()};
+  w.appendChild(d);w.onclick=()=>{delSk=null;assign(str)};h.appendChild(w);});}
+const ULTS={
+ cloak:{n:'암막',d:'5초간 상대 화면에서 상대 네모칸 바깥이 전부 안 보여요. 상대 스킬은 내 네모칸 안으로 들어와야 보여요. 대신 나는 5초간 상대 캐릭터가 안 보여요(스킬은 보여요).'},
+ freeze:{n:'고정',d:'상대를 그 자리에서 3초간 못 움직이게 해요.'},
+ summon:{n:'소환',d:'10초 동안 초당 2발, 내 네모칸 안 랜덤 위치에서 1픽셀 공격이 나가요.'}};
+function buildUlts(){const h=$('ults');h.innerHTML='';
+ Object.keys(ULTS).forEach(k=>{const b=document.createElement('button');b.className='tb'+(ult===k?' on':'');b.textContent=ULTS[k].n;
+  b.onclick=()=>{ult=(ult===k?'':k);persist();buildUlts()};h.appendChild(b)});
+ $('ultDesc').textContent=Object.keys(ULTS).map(k=>ULTS[k].n+': '+ULTS[k].d).join('\n')+'\n\n'+(ult?'선택됨: '+ULTS[ult].n:'선택 안 함 (P키를 눌러도 아무 일도 안 일어나요)')}
+$('skillSetBtn').onclick=()=>{delSk=null;actSlot=-1;setMsg('');buildSlots();buildUlts();buildSkills();go('skillSet')};
+$('skillSetBack').onclick=()=>go('menu');
+
+/* ================= 스킬 그리기: 9\times9 ================= */
+const SN=9,scv=$('scv'),sc=scv.getContext('2d');
+let smode=1,sg=new Array(SN*SN).fill(0),sundo=[],erase=false,sdraw_=false,slp=null,scell=32;
+function sdraw(){sc.fillStyle='#222';sc.fillRect(0,0,scv.width,scv.height);sc.fillStyle='#fff';
+ for(let i=0;i<sg.length;i++)if(sg[i])sc.fillRect((i%SN)*scell,((i/SN)|0)*scell,scell,scell);
+ sc.strokeStyle='#555';sc.lineWidth=1;sc.beginPath();
+ for(let k=0;k<=SN;k++){sc.moveTo(k*scell+.5,0);sc.lineTo(k*scell+.5,SN*scell);sc.moveTo(0,k*scell+.5);sc.lineTo(SN*scell,k*scell+.5);}sc.stroke();}
+function sput(x,y){if(x>=0&&y>=0&&x<SN&&y<SN)sg[y*SN+x]=smode}
+function sstroke(e){const r=scv.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/r.width*SN),y=Math.floor((e.clientY-r.top)/r.height*SN);
+ if(slp){const n=Math.max(Math.abs(x-slp[0]),Math.abs(y-slp[1]),1);for(let i=0;i<=n;i++)sput(Math.round(slp[0]+(x-slp[0])*i/n),Math.round(slp[1]+(y-slp[1])*i/n));}else sput(x,y);
+ slp=[x,y];sdraw();}
+scv.onpointerdown=e=>{scv.setPointerCapture(e.pointerId);sundo.push(sg.slice());if(sundo.length>100)sundo.shift();slp=null;sdraw_=true;$('smsg').textContent='';
+ const r0=scv.getBoundingClientRect(),cx0=Math.floor((e.clientX-r0.left)/r0.width*SN),cy0=Math.floor((e.clientY-r0.top)/r0.height*SN);
+ smode=(erase||(cx0>=0&&cy0>=0&&cx0<SN&&cy0<SN&&sg[cy0*SN+cx0]))?0:1;
+ sstroke(e)};
+scv.onpointermove=e=>{if(sdraw_)sstroke(e)};
+scv.onpointerup=scv.onpointercancel=()=>{sdraw_=false;slp=null};
+function sTools(){$('skillEraser').classList.toggle('on',erase)}
+$('skillEraser').onclick=()=>{erase=!erase;sTools()};
+$('skillUndo').onclick=()=>{if(sundo.length){sg=sundo.pop();sdraw()}};
+$('skillSave').onclick=()=>{const str=sg.join('');if(!sg.some(v=>v)){$('smsg').textContent='그림이 비어 있어요!';return}
+ skills=skills.filter(x=>x!==str);skills.unshift(str);skills=skills.slice(0,30);
+ slots=slots.map(x=>skills.includes(x)?x:'');
+ let extra='';const e=slots.indexOf('');if(e>=0&&!slots.includes(str)){slots[e]=str;extra=' · '+SLOT_LAB[e]+' 슬롯에 넣었어요'}
+ persist();$('smsg').textContent='저장했어요'+extra+' (스킬 설정에서 바꿀 수 있어요)'};
+$('skillBtn').onclick=()=>{sg=new Array(SN*SN).fill(0);sundo=[];erase=false;sTools();$('smsg').textContent='';
+ scell=Math.max(16,Math.min(44,Math.floor((innerWidth-40)/SN),Math.floor((innerHeight-230)/SN)));
+ scv.width=scv.height=SN*scell;scv.style.width=scv.style.height=SN*scell+'px';go('skillScr');sdraw();};
+
+/* ================= 온라인: 방 만들기 / 입장 ================= */
+$('code').oninput=e=>{e.target.value=e.target.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,4)};
+function randCode(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<4;i++)s+=c[Math.floor(Math.random()*c.length)];return s}
+let named=null,off=null,G=null,raf=0,lastT=0;
+function pres(o){try{const p=named&&named.presence(o);if(p&&p.catch)p.catch(()=>{})}catch(e){}}
+async function leave(){G=null;$('exitBtn').style.display='none';if(off){off();off=null}if(named){try{await named.leave()}catch(e){}named=null}}
+$('leaveBtn').onclick=async()=>{await leave();go('codeScr')};
+$('exitBtn').onclick=async()=>{await leave();go('menu')};
+function createRoomTransport(){
+ return {join:(roomName,mode)=>new Promise((resolve,reject)=>{
+  let settled=false,peerId='',peers=[],selfPresence={};
+  const listeners=new Set();
+  const socket=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws');
+  const notify=()=>listeners.forEach(fn=>{try{fn()}catch(e){}});
+  const setPeers=list=>{
+   peers=(Array.isArray(list)?list:[]).filter(p=>p&&typeof p.peer==='string').map(p=>({
+    peer:p.peer,kind:'viewer',isMe:p.peer===peerId,sameTab:p.peer===peerId,presence:p.presence&&typeof p.presence==='object'?p.presence:{}
+   }));
+   const self=peers.find(p=>p.isMe);if(self)self.presence={...self.presence,...selfPresence};
+   notify();
+  };
+  const named={
+   get isConnected(){return socket.readyState===WebSocket.OPEN&&!!peerId},
+   peers:()=>peers,
+   presence:data=>{
+    if(!data||typeof data!=='object')return;
+    selfPresence={...selfPresence,...data};
+    const self=peers.find(p=>p.isMe);if(self)self.presence={...self.presence,...data};
+    notify();
+    if(socket.readyState===WebSocket.OPEN)socket.send(JSON.stringify({type:'presence',data}));
+   },
+   onPeers:fn=>{listeners.add(fn);return()=>listeners.delete(fn)},
+   leave:async()=>{
+    if(socket.readyState===WebSocket.OPEN)socket.send(JSON.stringify({type:'leave'}));
+    socket.close();peers=[];notify();
+   }
+  };
+  const timer=setTimeout(()=>{if(!settled){settled=true;reject(new Error('connection-timeout'));socket.close()}},8000);
+  socket.onopen=()=>socket.send(JSON.stringify({type:'join',room:roomName,mode}));
+  socket.onmessage=event=>{
+   let message;try{message=JSON.parse(event.data)}catch(e){return}
+   if(message.type==='join-error'){
+    clearTimeout(timer);if(!settled){settled=true;reject(new Error(message.code||'connection-failed'))}return;
+   }
+   if(message.type==='joined'){
+    peerId=message.peer;setPeers(message.peers);clearTimeout(timer);
+    if(!settled){settled=true;resolve(named)}return;
+   }
+   if(message.type==='peers')setPeers(message.peers);
+  };
+  socket.onerror=()=>{};
+  socket.onclose=()=>{
+   clearTimeout(timer);
+   if(!settled){settled=true;reject(new Error('connection-failed'))}
+   else{peers=[];notify()}
+  };
+ })}
+}
+function roomErrorMessage(error){
+ const code=error&&error.message;
+ return ({
+  'room-not-found':'그 코드의 방을 찾을 수 없어요. 코드를 다시 확인해 주세요',
+  'room-full':'이 방은 이미 가득 찼어요 (2명까지)',
+  'room-exists':'이미 사용 중인 코드예요. 다시 방을 만들어 주세요',
+  'invalid-room-code':'영어와 숫자로 4글자를 입력해 주세요',
+  'connection-timeout':'서버 응답이 늦어요. 잠시 후 다시 시도해 주세요'
+ })[code]||'온라인 서버에 연결할 수 없어요. 잠시 후 다시 시도해 주세요';
+}
+async function connect(mode){
+ let code=$('code').value.toUpperCase();
+ if(code===''){
+  if(mode==='join'){$('msg').textContent='방을 만든 사람의 4자리 코드를 입력해 주세요';return}
+  code=randCode();$('code').value=code}
+ if(!/^[A-Z0-9]{4}$/.test(code)){$('msg').textContent='영어와 숫자로 4글자를 입력해 주세요';return}
+ $('msg').textContent='연결 중…';
+ await leave();
+ try{named=await createRoomTransport().join('g-'+code.toLowerCase(),mode)}catch(e){$('msg').textContent=roomErrorMessage(e);return}
+ $('codeTag').textContent=code;$('msg').textContent='';
+ named.presence({game:'duel'});
+ go('wait');$('waitText').textContent='상대를 기다리는 중…';
+ const update=()=>{
+  if(G||!named)return;
+  const self=named.peers().find(p=>p.isMe&&p.sameTab);
+  if(!self||!self.presence||self.presence.game!=='duel'){return}
+  const players=named.peers().filter(p=>p.kind==='viewer'&&p.presence&&p.presence.game==='duel').sort((a,b)=>a.peer<b.peer?-1:1).slice(0,2);
+  if(!players.includes(self)){go('wait');$('waitText').textContent='이 방은 가득 찼어요 (2명까지)';return}
+  if(players.length>=2){startMatch(players.find(p=>p!==self))}else{go('wait');$('waitText').textContent='상대를 기다리는 중…'}
+ };
+ off=named.onPeers(update);update();
+ if(mode==='join'&&!G){
+  $('waitText').textContent='방을 찾는 중…';
+  const my=named;
+  setTimeout(()=>{
+   if(named!==my||G)return;
+   const others=named.peers().filter(p=>!p.isMe&&p.kind==='viewer'&&p.presence&&p.presence.game==='duel');
+   if(!others.length)leave().then(()=>{go('codeScr');$('msg').textContent='그 코드의 방을 찾을 수 없어요. 코드를 다시 확인해 주세요'});
+  },3500);
+ }
+}
+$('makeBtn').onclick=()=>connect('make');
+$('joinBtn').onclick=()=>connect('join');
+
+/* ================= 대전 ================= */
+const cv=$('cv'),ctx=cv.getContext('2d');
+let VK=1;   // 화면 배율
+function fit(){const box=$('duel');const w=box.clientWidth,h=box.clientHeight;VK=Math.max(.1,Math.min(w/W,h/VH));
+ const dpr=window.devicePixelRatio||1;cv.style.width=W*VK+'px';cv.style.height=VH*VK+'px';cv.width=Math.round(W*VK*dpr);cv.height=Math.round(VH*VK*dpr);placeExit()}
+function placeExit(){const b=$('exitBtn');b.style.left=(
+image.png
+(173.92 KB)
+image.png
+(129.14 KB)
+파일이 총 네갠데 어케함
+
+✅ 완벽합니다!
+GitHub에 파일이 3개 다 있습니다:
+
+✅ public (폴더)
+   └── game.html
+✅ package.json
+✅ server.js
+🚀 이제 Railway 배포!
+https://railway.app 방문
+"New Project" 클릭
+"Deploy from GitHub" 선택
+multiplayer-battle-game 저장소 선택
+"Deploy" 클릭
+2-5분 기다리면 배포 완료!
+
+그럼 당신의 게임이 온라인에서 실시간으로 작동합니다! 🔥
+
+image.png
+(110.71 KB)
+여기서 뭐해
+
+✅ 배포 중입니다!
+화면에 보이는 것:
+
+multiplayer-battle-game
+Initializing (00:14)
+지금 Railway가 당신의 게임을 배포하고 있습니다!
+
+⏳ 지금 해야 할 일
+그냥 기다리세요!
+
+✅ 배포 진행 중
+⏳ 1-3분 더 소요
+🔄 "Initializing" → "Success" 될 때까지
+화면을 닫지 마세요!
+
+완료되면 URL이 나타납니다! 🚀
+
+image.png
+(73.04 KB)
+image.png
+(217.88 KB)
+여기서 url 들어갔는데 에러라고 뜨는데
+
+🔴 에러 발생!
+화면에 보이는 것:
+
+Cannot GET /
+문제 원인
+server.js에서 game.html 파일을 찾지 못했습니다.
+
+✅ 해결 방법
+server.js의 이 부분을 수정해야 합니다:
+
+현재 코드:
+
+app.use(express.static(join(__dirname, 'public')));
+변경할 코드:
+
+app.use(express.static(join(__dirname, 'public')));
+
+// 루트 경로에서 game.html 제공
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'public', 'game.html'));
+});
+🔧 지금 해야 할 일
+GitHub로 돌아가기
+server.js 파일 수정
+위의 코드를 추가
+Commit
+Railway가 자동으로 재배포됨
+GitHub에서 server.js를 수정할래요?
+
+변경하려고 하는데 쓰는거 자체가 안돼
+
+✅ GitHub에서 파일 수정하는 방법
+GitHub 저장소 페이지 접속
+server.js 파일 클릭
+오른쪽 상단의 연필 모양 아이콘 클릭 (Edit)
+코드 수정
+아래 "Commit changes" 클릭
+🔧 수정할 부분
+현재 코드를 찾으세요:
+
+app.use(express.static(join(__dirname, 'public')));
+바로 다음에 이 코드를 추가:
+
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'public', 'game.html'));
+});
+📍 정확한 위치
+app.use(cors());
+app.use(express.static(join(__dirname, 'public')));
+
+// ← 여기에 추가!
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'public', 'game.html'));
+});
+
+// ===============================
+연필 아이콘이 안 보이나요?
+
+연필 아이콘을 누르려는데 "you must be on a branch to make or propose changes to this file" 이라고 뜨는데
+
+✅ 해결 방법
+이 에러는 main 브랜치가 없어서 나타나는 것입니다.
+
+🔧 3가지 해결 방법
+방법 1: GitHub에서 직접 파일 생성 (가장 쉬움)
+GitHub 저장소 메인 페이지
+"Add file" → "Upload files"
+수정된 server.js 파일 업로드
+"Commit changes" 클릭
+방법 2: 새 저장소 만들기 (추천)
+https://github.com/new 방문
+새 저장소명: superpower-battle-railway
+"Create repository" 클릭
+파일 3개 처음부터 다시 업로드 (수정된 server.js 포함)
+📝 수정된 server.js (전체)
+import http from 'http';
+import express from 'express';
+import cors from 'cors';
+import { WebSocketServer } from 'ws';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { randomUUID } from 'crypto';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocketServer({ noServer: true });
+
+app.use(cors());
+app.use(express.static(join(__dirname, 'public')));
+
+// 루트 경로에서 game.html 제공
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'public', 'game.html'));
+});
+
+// ===============================
+// 🎮 게임 방 관리
+// ===============================
+
+const rooms = new Map();
+const MAX_ROOM_SIZE = 2;
+
+function asRecord(value) {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+    ? value
+    : null;
+}
+
+function finite(value) {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function sanitizePresence(value) {
+  const data = asRecord(value);
+  if (!data) return {};
+
+  const presence = {};
+  if (data.game === 'duel') presence.game = 'duel';
+  if (finite(data.hp)) presence.hp = clamp(data.hp, 0, 100);
+  if (finite(data.lx)) presence.lx = clamp(data.lx, -200, 600);
+  if (finite(data.ly)) presence.ly = clamp(data.ly, -300, 1300);
+  if (finite(data.al)) presence.al = clamp(data.al, 0, 1);
+
+  if (Array.isArray(data.cast)) {
+    presence.cast = data.cast
+      .filter((item) => asRecord(item) !== null)
+      .filter(
+        (item) =>
+          finite(item.i) &&
+          Number.isSafeInteger(item.i) &&
+          typeof item.s === 'string' &&
+          /^[01]{81}$/.test(item.s) &&
+          item.s.includes('1') &&
+          finite(item.x) &&
+          finite(item.y)
+      )
+      .slice(-5)
+      .map((item) => ({
+        i: item.i,
+        s: item.s,
+        x: clamp(item.x, -200, 600),
+        y: clamp(item.y, -300, 1300),
+      }));
+  }
+
+  if (Array.isArray(data.ult)) {
+    presence.ult = data.ult
+      .filter((item) => asRecord(item) !== null)
+      .filter(
+        (item) =>
+          finite(item.i) &&
+          Number.isSafeInteger(item.i) &&
+          (item.k === 'cloak' || item.k === 'freeze')
+      )
+      .slice(-3)
+      .map((item) => ({
+        i: item.i,
+        k: item.k,
+      }));
+  }
+  return presence;
+}
+
+function send(socket, message) {
+  if (socket.readyState === 1) {
+    socket.send(JSON.stringify(message));
+  }
+}
+
+function snapshot(room) {
+  return [...room.members.values()].map(({ id, presence }) => ({
+    peer: id,
+    presence,
+  }));
+}
+
+function broadcastRoom(room) {
+  const message = { type: 'peers', peers: snapshot(room) };
+  for (const member of room.members.values()) send(member.socket, message);
+}
+
+function removeMember(room, memberId) {
+  if (!room.members.delete(memberId)) return;
+  if (room.members.size === 0) {
+    rooms.delete(room.name);
+  } else {
+    broadcastRoom(room);
+  }
+}
+
+function parseMessage(data) {
+  try {
+    const message = asRecord(JSON.parse(data.toString('utf8')));
+    if (!message || typeof message.type !== 'string') return null;
+    if (
+      message.type === 'join' &&
+      typeof message.room === 'string' &&
+      (message.mode === 'make' || message.mode === 'join')
+    ) {
+      return { type: 'join', room: message.room, mode: message.mode };
+    }
+    if (message.type === 'presence') {
+      return { type: 'presence', data: message.data };
+    }
+    if (message.type === 'leave') return { type: 'leave' };
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+function joinError(socket, code) {
+  send(socket, { type: 'join-error', code });
+  socket.close(1008, code);
+}
+
+// ===============================
+// 🌐 WebSocket 서버
+// ===============================
+
+server.on('upgrade', (request, socket, head) => {
+  let pathname = '';
+  try {
+    pathname = new URL(request.url ?? '/', 'http://localhost').pathname;
+  } catch {
+    socket.destroy();
+    return;
+  }
+  if (pathname !== '/ws') return;
+  
+  wss.handleUpgrade(request, socket, head, (websocket) => {
+    wss.emit('connection', websocket, request);
+  });
+});
+
+wss.on('connection', (socket) => {
+  let joined = null;
+
+  socket.on('message', (raw) => {
+    const message = parseMessage(raw);
+    if (!message) {
+      send(socket, { type: 'error', code: 'invalid-message' });
+      return;
+    }
+
+    if (message.type === 'join') {
+      if (joined) {
+        send(socket, { type: 'error', code: 'already-joined' });
+        return;
+      }
+      if (!/^g-[a-z0-9]{4}$/.test(message.room)) {
+        joinError(socket, 'invalid-room-code');
+        return;
+      }
+
+      let room = rooms.get(message.room);
+      if (message.mode === 'make') {
+        if (room && room.members.size > 0) {
+          joinError(socket, 'room-exists');
+          return;
+        }
+        room = { name: message.room, members: new Map() };
+        rooms.set(message.room, room);
+      } else if (!room || room.members.size === 0) {
+        joinError(socket, 'room-not-found');
+        return;
+      } else if (room.members.size >= MAX_ROOM_SIZE) {
+        joinError(socket, 'room-full');
+        return;
+      }
+
+      const member = {
+        id: randomUUID(),
+        socket,
+        presence: {},
+        lastPresenceAt: 0,
+      };
+      room.members.set(member.id, member);
+      joined = { room, member };
+      send(socket, {
+        type: 'joined',
+        peer: member.id,
+        room: room.name,
+        peers: snapshot(room),
+      });
+      broadcastRoom(room);
+      console.log(`✅ 플레이어 입장: ${message.room}`);
+      return;
+    }
+
+    if (message.type === 'leave') {
+      if (joined) removeMember(joined.room, joined.member.id);
+      joined = null;
+      socket.close(1000, 'left room');
+      return;
+    }
+
+    if (message.type === 'presence' && joined) {
+      const now = Date.now();
+      const presence = sanitizePresence(message.data);
+      if (now - joined.member.lastPresenceAt < 20) {
+        const pendingEvents = {};
+        if (presence.cast?.length) pendingEvents.cast = presence.cast;
+        if (presence.ult?.length) pendingEvents.ult = presence.ult;
+        if (Object.keys(pendingEvents).length > 0) {
+          joined.member.presence = {
+            ...joined.member.presence,
+            ...pendingEvents,
+          };
+        }
+        return;
+      }
+      joined.member.lastPresenceAt = now;
+      joined.member.presence = {
+        ...joined.member.presence,
+        ...presence,
+      };
+      broadcastRoom(joined.room);
+    }
+  });
+
+  socket.on('close', () => {
+    if (joined) removeMember(joined.room, joined.member.id);
+    joined = null;
+  });
+
+  socket.on('error', (error) => {
+    console.error('WebSocket 에러:', error);
+  });
+});
+
+// ===============================
+// 🚀 서버 시작
+// ===============================
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`🎮 초능력 대전 서버 실행: http://localhost:${PORT}`);
+  console.log(`📡 WebSocket: ws://localhost:${PORT}/ws`);
+});
+이 수정된 server.js로 새 저장소를 만드세요!
+
